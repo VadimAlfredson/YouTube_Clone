@@ -1,0 +1,16 @@
+
+
+.stack {
+    flex-direction: column;
+}
+
+.box {
+    height: 98vh;
+    border-right: 1px solid #3d3d3d;
+}
+
+.text {
+    margin-top: 1px;
+    color: #fff;
+}
+

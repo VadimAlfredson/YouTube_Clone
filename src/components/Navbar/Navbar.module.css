@@ -1,0 +1,31 @@
+.stackStyle {
+ position: sticky;
+    background: #000;
+    top: 0;
+    justify-content: space-between;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+}
+
+.imgLogo {
+    height: 45px;
+}
+
+
+/* SearchBar */
+
+.paper {
+    border-radius: 20px;
+    border: 1px solid #e3e3e3;
+    padding-left: 2px;
+    box-shadow: none;
+    margin-right: 5px;
+}
+.iconButton {
+    padding: 10px;
+    color: red;
+}
+
