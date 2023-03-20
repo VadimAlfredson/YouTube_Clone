@@ -1,6 +1,7 @@
 import React from "react";
 import {Box, Stack, Typography} from "@mui/material";
 import Sidebar from "./Sidebar";
+import Videos from "./Videos";
 
 const Feed = () => {
     return (
@@ -23,6 +24,28 @@ const Feed = () => {
                 >
                    Directed by Vadim Allayarov
                 </Typography>
+            </Box>
+            <Box
+            p={2}
+            sx={{
+                overflowY: 'auto',
+                height: '90vh',
+                flex: 2
+            }}>
+                <Typography
+                    variant="h4"
+                    mb={2}
+                    sx={{
+                        color: 'white'
+                    }}
+                >
+                    New <span
+                    style={{
+                        color: '#F31503'
+                    }}
+                >videos</span>
+                </Typography>
+                <Videos />
             </Box>
         </Stack>
     )
