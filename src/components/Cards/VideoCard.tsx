@@ -1,12 +1,12 @@
 import React from "react";
-import {videosItem} from "../Feed";
 import {Card, CardContent, CardMedia, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
-import {demoChannelTitle, demoChannelUrl, demoVideoTitle, demoVideoUrl} from "../../../utils/constants";
+import {demoChannelTitle, demoChannelUrl, demoVideoTitle, demoVideoUrl} from "../../utils/constants";
 import {CheckCircle} from "@mui/icons-material";
+import {videosItemType} from "../../types/typesItems";
 
-const VideoCard: React.FC<{ video: videosItem }> = ({video}) => {
-    return <Card sx={{width: {md: 320, xs: '100%'}, boxShadow: 0, borderRadius: 0}}>
+const VideoCard: React.FC<{ video: videosItemType }> = ({video}) => {
+    return <Card sx={{width: {md: 320, xs: '100%'}, boxShadow: 'none', borderRadius: 0}}>
         <Link to={video.id.videoId ? `/video/${video.id.videoId}` : demoVideoUrl}>
             <CardMedia
                 image={video.snippet?.thumbnails?.high?.url}
@@ -22,7 +22,7 @@ const VideoCard: React.FC<{ video: videosItem }> = ({video}) => {
             <Link to={video.snippet.channelId ? `/video/${video.snippet.channelId}` : demoChannelUrl}>
                 <Typography variant='subtitle2' fontWeight='bold' color='grey'>
                     {video.snippet.channelTitle || demoChannelTitle}
-                    <CheckCircle sx={{fondSize: 12, color: 'gray', ml: '5px'}}/>
+                    <CheckCircle sx={{width: 12, color: 'gray', ml: '5px'}}/>
                 </Typography>
             </Link>
         </CardContent>
