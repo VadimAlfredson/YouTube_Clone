@@ -1,12 +1,12 @@
 import React from "react";
-import {videosItem} from "../Feed";
 import {Box, Stack} from "@mui/material";
-import VideoCard from "./VideoCard";
-import ChannelCard from "./ChannelCard";
+import VideoCard from "../../Cards/VideoCard";
+import ChannelCard from "../../Cards/ChannelCard";
+import { videosItemType } from "../../../types/typesItems";
 
 
 type propsType = {
-    videos: videosItem[]
+    videos: videosItemType[]
 }
 const Videos = (props: propsType) => {
     console.log(props.videos)
@@ -19,7 +19,7 @@ const Videos = (props: propsType) => {
         {props.videos.map((item, index) => (
             <Box key={index}>
                 {item.id.videoId && <VideoCard video={item}/>}
-                {item.id.channelId && <ChannelCard channelDetail={item}/>}
+                {item.id.channelId && <ChannelCard id={item.id.channelId} img={item.snippet.thumbnails.high.url} title={item.snippet.title}/>}
             </Box>
         ))}
     </Stack>

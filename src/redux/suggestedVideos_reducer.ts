@@ -2,31 +2,32 @@ import {createSlice, Dispatch} from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import {RootState} from "./store";
 import {fetchFromAPI} from "../api/API";
-import {videosItem} from "../types/typesItems";
+import {videosItemType} from "../types/typesItems";
 
 
 
 
-export const counterSlice = createSlice({
-    name: 'videos',
+export const videosSlice = createSlice({
+    name: 'suggestedVideos',
     initialState: {
-        videos: [] as videosItem[]
+        videos: [] as videosItemType[]
     },
     reducers: {
-        getVideos: (state, action: PayloadAction<videosItem[]>) => {
+        getVideos: (state, action: PayloadAction<videosItemType[]>) => {
+            debugger
             return { ...state,
             videos: action.payload}
         },
     },
 })
 
-export const { getVideos  } = counterSlice.actions
+export const { getVideos  } = videosSlice.actions
 
-// Other code such as selectors can use the imported `RootState` type
 export const getSuggestedVideos = (searchSelected: string) => async (dispatch: Dispatch) =>{
     let response = await fetchFromAPI.getVideos(searchSelected)
     console.log(response)
-    dispatch(getVideos(response.data))
+    debugger
+    dispatch(getVideos(response.items))
 }
 
-export default counterSlice.reducer
+export default videosSlice.reducer

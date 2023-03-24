@@ -2,41 +2,27 @@ import React, {useEffect, useState} from "react";
 import {Box, Stack, Typography} from "@mui/material";
 import Sidebar from "./Sidebar";
 import Videos from "./Videos/Videos";
-import {fetchFromAPI} from "../../api/API";
+import {videosItemType} from "../../types/typesItems";
+import {useAppDispatch, useAppSelector} from "../../types/hooks";
+import { getSuggestedVideos } from "../../redux/suggestedVideos_reducer";
 
-export type videosItem = {
-    id: {
-        kind: string
-        videoId?: string
-        channelId?: string
-    }
-    kind: string
-    snippet: {
-        channelId: string
-        channelTitle:
-            string
-        description: string
-        liveBroadcastContent: string
-        publishTime: string
-        publishedAt: string
 
-        thumbnails: {
-            default: { url: string, width: number, height: number }
-            high: { url: string, width: number, height: number }
-            medium: { url: string, width: number, height: number }
-        }
-        title: string
-    }
-}
 
 const Feed = () => {
+    const dispatch = useAppDispatch()
+    const videosItems = useAppSelector(state => state.videos.videos)
+
     const [selectedCategory, setSelectedCategory] = useState<string>('New')
-    const [videos, setVideos] = useState([] as videosItem[])
+    const [videos, setVideos] = useState(videosItems as videosItemType[])
+
     useEffect(() => {
-        fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-            .then((data) => {
-                setVideos(data.items)
-            })
+        if (videos !== videosItems) {
+            setVideos(videosItems)
+        }
+    }, [videosItems])
+
+    useEffect(() => {
+        dispatch(getSuggestedVideos(selectedCategory))
     }, [selectedCategory])
 
     let onSelectedCategory = (categoryName: string) => {

@@ -1,33 +1,30 @@
 import {createSlice, Dispatch} from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import {RootState} from "./store";
 import {fetchFromAPI} from "../api/API";
-import {videosItem} from "../types/typesItems";
+import {channelDetailsType} from "../types/typesItems";
 
 
 
 
-export const videosSlice = createSlice({
+export const detailsSlice = createSlice({
     name: 'suggestedVideos',
     initialState: {
-        videos: [] as videosItem[]
+        channelDetails: {} as channelDetailsType
     },
     reducers: {
-        getVideos: (state, action: PayloadAction<videosItem[]>) => {
-            debugger
+        getDetails: (state, action: PayloadAction<channelDetailsType>) => {
             return { ...state,
-            videos: action.payload}
+                channelDetails: action.payload}
         },
     },
 })
 
-export const { getVideos  } = videosSlice.actions
+export const { getDetails  } = detailsSlice.actions
 
-export const getSuggestedVideos = (searchSelected: string) => async (dispatch: Dispatch) =>{
-    let response = await fetchFromAPI.getVideos(searchSelected)
+export const getChannelDetails = (id: string) => async (dispatch: Dispatch) =>{
+    let response = await fetchFromAPI.getChannelDetails(id)
     console.log(response)
-    debugger
-    dispatch(getVideos(response.items))
+    dispatch(getDetails(response.items[0]))
 }
 
-export default videosSlice.reducer
+export default detailsSlice.reducer
