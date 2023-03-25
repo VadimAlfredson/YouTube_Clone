@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import {demoProfilePicture} from "../../utils/constants";
 import {CheckCircle} from "@mui/icons-material";
 
-const ChannelCard:React.FC<{id?: string, img: string, title: string}> = ({id, img, title }) => {
+const ChannelCard:React.FC<{id?: string, img: string, title: string, marginTop?: string}> = ({id, img, title , marginTop}) => {
     return <Box
     sx={{boxShadow: 'none', borderRadius: '20px', display: 'flex', justifyContent: 'center',
-    alignItems: 'center', width: {md: '320px', xs: '356px'}, height: '326px', margin: 'auto'
+    alignItems: 'center', width: {md: '320px', xs: '356px'}, height: '326px', margin: 'auto', marginTop: marginTop
     }}
     >
 <Link to={`/channel/${id}`}>

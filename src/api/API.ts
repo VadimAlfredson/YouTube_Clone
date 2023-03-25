@@ -29,9 +29,9 @@ const options = {
 }*/
 
 export const fetchFromAPI = {
-    getVideos: (searchSelected: string) => {
+    getVideos: (search: string) => {
         let options = { params: {maxResults: '50'}}
-        return instance.get(`search?part=snippet&q=${searchSelected}`, options)
+        return instance.get(`search?part=snippet&q=${search}`, options)
             .then(response => {
                 return response.data
             })
@@ -39,6 +39,20 @@ export const fetchFromAPI = {
     getChannelDetails: (id: string) => {
         let options = { params: {part: 'snippet,statistics', id: `${id}`},}
         return instance.get('https://youtube-v31.p.rapidapi.com/channels', options)
+            .then(response => {
+                return response.data
+            })
+    },
+    getVideosOfChannel: (id: string) => {
+        let options = { params: {maxResults: '50', part: 'snippet,id', order: 'date'}}
+        return instance.get(`search?channelId=${id}`, options)
+            .then(response => {
+                return response.data
+            })
+    },
+    getVideoDetails: (videoID: string) => {
+        let options = { params: {part: 'contentDetails,snippet,statistics', id: `${videoID}`}}
+        return instance.get(`videos`, options)
             .then(response => {
                 return response.data
             })

@@ -1,0 +1,12 @@
+
+.reactPlayer {
+    height: 77vh !important;
+    width: 100% !important;
+}
+
+
+@media screen and (max-width: 600px) {
+    .reactPlayer {
+        height: 45vh !important;
+    }
+}

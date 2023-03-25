@@ -73,3 +73,50 @@ export type channelDetailsType = {
         viewCount: string
     }
 }
+
+export type videoDetailsType = {
+    contentDetails: {
+        caption: string
+        contentRating: {}
+        definition: string
+        dimension: string
+        duration: string
+        licensedContent: boolean
+        projection: string
+    }
+    id: string
+    kind: string
+    snippet: {
+        categoryId: string
+        channelId: string
+        channelTitle: string
+        defaultAudioLanguage: string
+        description: string
+        liveBroadcastContent: string
+        localized: {
+            title: string
+            description: string
+        }
+        publishedAt: string
+        tags: []
+        thumbnails: {
+            default:
+                { url: string, width: number, height: number }
+            high:
+                { url: string, width: number, height: number }
+            maxres:
+                { url: string, width: number, height: number }
+            medium:
+                { url: string, width: number, height: number }
+            standard:
+                { url: string, width: number, height: number }
+        }
+        title: string
+    }
+    statistics: {
+        commentCount: string
+        favoriteCount: string
+        likeCount: string
+        viewCount: string
+    }
+}
