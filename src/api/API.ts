@@ -30,31 +30,45 @@ const options = {
 
 export const fetchFromAPI = {
     getVideos: (search: string) => {
-        let options = { params: {maxResults: '50'}}
+        let options = {params: {maxResults: '50'}}
         return instance.get(`search?part=snippet&q=${search}`, options)
             .then(response => {
                 return response.data
             })
     },
     getChannelDetails: (id: string) => {
-        let options = { params: {part: 'snippet,statistics', id: `${id}`},}
-        return instance.get('https://youtube-v31.p.rapidapi.com/channels', options)
+        let options = {params: {part: 'snippet,statistics', id: `${id}`},}
+        return instance.get('channels', options)
             .then(response => {
                 return response.data
             })
     },
     getVideosOfChannel: (id: string) => {
-        let options = { params: {maxResults: '50', part: 'snippet,id', order: 'date'}}
+        let options = {params: {maxResults: '50', part: 'snippet,id', order: 'date'}}
         return instance.get(`search?channelId=${id}`, options)
             .then(response => {
                 return response.data
             })
     },
     getVideoDetails: (videoID: string) => {
-        let options = { params: {part: 'contentDetails,snippet,statistics', id: `${videoID}`}}
+        let options = {params: {part: 'contentDetails,snippet,statistics', id: `${videoID}`}}
         return instance.get(`videos`, options)
             .then(response => {
                 return response.data
             })
-    }
+    },
+    getRelatedVideos: (relatedToVideoId?: string) => {
+        let options = {
+            params: {
+                relatedToVideoId: relatedToVideoId,
+                part: 'id,snippet',
+                type: 'video',
+                maxResults: '50'
+            }
+        }
+        return instance.get(`search`, options)
+            .then(response => {
+                return response.data
+            })
+    },
 }

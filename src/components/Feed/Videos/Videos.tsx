@@ -7,11 +7,12 @@ import { videosItemType } from "../../../types/typesItems";
 
 type propsType = {
     videos: videosItemType[]
+    direction?: "column" | "row" | "row-reverse" | "column-reverse"
 }
 const Videos = (props: propsType) => {
     console.log(props.videos)
     return <Stack
-        direction='row'
+        direction={props.direction || 'row'}
         flexWrap='wrap'
         justifyContent='start'
         gap={2}

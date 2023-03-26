@@ -6,11 +6,11 @@ import {CheckCircle} from "@mui/icons-material";
 import {videosItemType} from "../../types/typesItems";
 
 const VideoCard: React.FC<{ video: videosItemType }> = ({video}) => {
-    return <Card sx={{width: {md: 320, xs: '100%'}, boxShadow: 'none', borderRadius: 0}}>
+    return <Card sx={{width: {xs: '100%', sm: 358, md: 320 }, boxShadow: 'none', borderRadius: 0}}>
         <Link to={video.id.videoId ? `/video/${video.id.videoId}` : demoVideoUrl}>
             <CardMedia
                 image={video.snippet?.thumbnails?.high?.url}
-                sx={{width: 358, height: 180}}
+                sx={{width: {xs: '100%', sm: 358, md: 320}, height: 180}}
             />
         </Link>
         <CardContent sx={{backgroundColor: '#1e1e1e', height: '106px'}}>
