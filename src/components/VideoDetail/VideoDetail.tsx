@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {Box, Stack, Typography} from "@mui/material";
+import {Box, Button, Stack, Typography} from "@mui/material";
 import ReactPlayer from "react-player";
 import {useAppDispatch, useAppSelector} from "../../types/hooks";
-import {getRelatedVideosTC, getVideoDetailsTC} from "../../redux/videoDetails_reducer";
+import {getCommentsVideoTC, getRelatedVideosTC, getVideoDetailsTC} from "../../redux/videoDetails_reducer";
 import {Link, useParams} from "react-router-dom";
 import s from "./VideoDetails.module.css"
 import {videoDetailsType, videosItemType} from "../../types/typesItems";
@@ -13,11 +13,23 @@ import Videos from "../Feed/Videos/Videos";
 const VideoDetail = () => {
     const dispatch = useAppDispatch()
     const {id} = useParams()
+
     const videoDetailsState = useAppSelector(state => state.videoDetails.videoDetails)
     const relatedVideosState = useAppSelector(state => state.videoDetails.relatedVideos)
+    const commentsVideo =useAppSelector(state => state.videoDetails.comments)
 
+    const [showComments, setShowComments] = useState(false)
     const [relatedVideos, setRelatedVideos] = useState<videosItemType[]>(relatedVideosState)
     const [videoDetails, setVideoDetails] = useState<videoDetailsType>(videoDetailsState)
+
+    useEffect(() => {
+        if (showComments) {
+        dispatch(getCommentsVideoTC(`${id}`))}
+    }, [showComments, id])
+
+    useEffect(() => {
+        console.log(commentsVideo)
+    }, [commentsVideo])
 
     useEffect(() => {
         if (videoDetails !== videoDetailsState) {
@@ -36,7 +48,6 @@ const VideoDetail = () => {
             dispatch(getVideoDetailsTC(`${id}`))
             dispatch(getRelatedVideosTC(`${id}`))
         }
-        debugger
     }, [id])
 
 
@@ -71,6 +82,13 @@ const VideoDetail = () => {
                                 </Typography>
                             </Stack>
                         </Stack>}
+                    <Box>{!showComments
+                        ? <Button onClick={() => setShowComments(true)}
+                                  color='primary'
+                                  sx={{width: '100%'}}
+                                  >Show comments</Button>
+                        : <Box color='white'>Comments</Box>}
+                    </Box>
                 </Box>
             </Box>
             <Box px={2} py={{md: 1, xs: 5}} justifyContent='center' alignItems='center'>

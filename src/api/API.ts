@@ -71,4 +71,10 @@ export const fetchFromAPI = {
                 return response.data
             })
     },
+    getCommentsVideo: (id: string) => {
+        let options = {params: {part: 'snippet', videoId: `${id}`, maxResults: '100'}}
+        return instance.get('commentThreads', options)
+            .then(response => {
+                return response.data})
+    }
 }
