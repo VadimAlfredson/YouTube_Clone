@@ -9,6 +9,7 @@ import {videoDetailsType, videosItemType} from "../../types/typesItems";
 import {CheckCircle} from "@mui/icons-material";
 import VideoCard from "../Cards/VideoCard";
 import Videos from "../Feed/Videos/Videos";
+import CommentCard from "../Cards/CommentCard";
 
 const VideoDetail = () => {
     const dispatch = useAppDispatch()
@@ -52,7 +53,7 @@ const VideoDetail = () => {
 
 
     return <Box minHeight={'95vh'}>
-        <Stack direction={{xs: 'column', md: 'row'}}>
+        <Stack direction={{xs: 'column', md: 'row'}} >
             <Box flex={1}>
                 <Box sx={{width: '100%', position: 'sticky', top: '86px'}}>
                     <ReactPlayer
@@ -87,7 +88,7 @@ const VideoDetail = () => {
                                   color='primary'
                                   sx={{width: '100%'}}
                                   >Show comments</Button>
-                        : <Box color='white'>Comments</Box>}
+                        : <Box py={{md: 1, xs: 5}} px={2} justifyContent='center' alignItems='center'>{commentsVideo.map(comment => <CommentCard comment={comment}/>)}</Box>}
                     </Box>
                 </Box>
             </Box>
