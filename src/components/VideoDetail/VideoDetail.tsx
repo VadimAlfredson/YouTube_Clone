@@ -52,14 +52,19 @@ const VideoDetail = () => {
     }, [id])
 
 
-    return <Box minHeight={'95vh'}>
-        <Stack direction={{xs: 'column', md: 'row'}} >
+    return <Box minHeight={'45vh'}>
+        <Stack direction={{xs: 'column', md: 'row'}}
+               sx={{maxWidth: '1600px', width:'100%',
+                   margin:'0 auto', gap: 1, padding: '15px'}}>
             <Box flex={1}>
                 <Box sx={{width: '100%', position: 'sticky', top: '86px'}}>
                     <ReactPlayer
+                        width={'100%'}
+                        height={'1024px'}
                         url={`https://www.youtube.com/watch?v=${id}`}
                         className={s.reactPlayer}
                         controls
+                        pip={true}
                     />
                     {videoDetails.id && <Typography
                         color='#fff' variant='h5' fontWeight='bold' p={2}
@@ -92,7 +97,7 @@ const VideoDetail = () => {
                     </Box>
                 </Box>
             </Box>
-            <Box px={2} py={{md: 1, xs: 5}} justifyContent='center' alignItems='center'>
+            <Box px={0} py={{md: 1, xs: 5}} justifyContent='center' alignItems='center'>
                 <Videos videos={relatedVideos} direction={'column'}/>
             </Box>
         </Stack>

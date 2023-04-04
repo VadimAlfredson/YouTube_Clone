@@ -13,7 +13,7 @@ const VideoCard: React.FC<{ video: videosItemType }> = ({video}) => {
                 sx={{width: {xs: '100%', sm: 358, md: 320}, height: 180}}
             />
         </Link>
-        <CardContent sx={{backgroundColor: '#1e1e1e', height: '106px'}}>
+        <CardContent sx={{backgroundColor: '#1e1e1e', height: '70px'}}>
             <Link to={video.id.videoId ? `/video/${video.id.videoId}` : demoVideoUrl}>
                 <Typography variant='subtitle1' fontWeight='bold' color='#FFF'>
                     {video.snippet.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
