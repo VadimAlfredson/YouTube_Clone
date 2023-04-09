@@ -29,3 +29,21 @@
     color: red;
 }
 
+.redBoxLogo {
+    height: 40px;
+    width: 60px;
+    border-radius: 10px;
+    background-color: red;
+    align-items: center;
+}
+
+.whiteBoxLogo {
+    margin: 13px auto;
+    height: 14px;
+    width: 14px;
+}
+
+.whiteLogo {
+    border: 7px solid transparent;
+    border-left: 20px solid white;
+}

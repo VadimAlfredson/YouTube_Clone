@@ -19,7 +19,12 @@ const Navbar: React.FC = () => {
         p={2}
     >
         <Link to='/' className={s.link}>
-            <img src={logo} alt='logo' className={s.imgLogo}/>
+            <div className={s.redBoxLogo}>
+                <div className={s.whiteBoxLogo}>
+                    <div className={s.whiteLogo}/>
+                </div>
+            </div>
+            {/*<img src={logo} alt='logo' className={s.imgLogo}/>*/}
         </Link>
         <SearchBar/>
     </Stack>

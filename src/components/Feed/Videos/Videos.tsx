@@ -12,9 +12,11 @@ type propsType = {
 const Videos = (props: propsType) => {
     console.log(props.videos)
     return <Stack
+        margin='auto'
         direction={props.direction || 'row'}
         flexWrap='wrap'
         justifyContent='start'
+        alignItems='center'
         gap={2}
     >
         {props.videos.map((item, index) => (
