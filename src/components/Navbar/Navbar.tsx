@@ -8,7 +8,8 @@ import SearchBar from "./SearchBar";
 const Navbar: React.FC = () => {
     return <Stack
         sx={{
-            position: 'sticky',
+            zIndex: 5,
+            position: 'static',
             background: '#000',
             top: 0,
             justifyContent: 'space-between'

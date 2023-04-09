@@ -12,6 +12,7 @@ import {
     Typography
 } from "@mui/material";
 import {commentType} from "../../types/typesItems";
+import {Favorite} from "@mui/icons-material";
 
 
 const CommentCard: React.FC<{ comment: commentType }> = ({comment}) => {
@@ -31,17 +32,17 @@ const CommentCard: React.FC<{ comment: commentType }> = ({comment}) => {
                         subheader={<Typography
                             sx={{color: 'grey'}}>{comment.snippet.topLevelComment.snippet.publishedAt}</Typography>}
             />
-            <CardContent sx={{m: '0', pt: '3px', pb: '3px'}}>
+            <CardContent sx={{ml: '50px', pt: '3px', pb: '3px'}}>
                 <Typography color='white'>{comment.snippet.topLevelComment.snippet.textDisplay}</Typography>
             </CardContent>
             <CardActions disableSpacing sx={{
                 m: '0', pt: '3px',
-                pb: '3px', mr: '10%', justifyContent: 'right'
+                pb: '3px', ml: '50px'
             }}>
                 <IconButton aria-label="add to favorites" sx={{}}>
-                    {`<З`}
+                    <Favorite sx={{color: 'white'}} />
                 </IconButton>
-                <Typography color='white'>{comment.snippet.topLevelComment.snippet.likeCount}</Typography>
+                <Typography variant={'inherit'} color='white'>{comment.snippet.topLevelComment.snippet.likeCount}</Typography>
             </CardActions>
         </Card>
 
