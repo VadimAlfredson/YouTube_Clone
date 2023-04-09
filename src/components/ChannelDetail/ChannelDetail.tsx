@@ -18,7 +18,7 @@ const ChannelDetail = () => {
 
     const {id} = useParams()
 
-    console.log('refresh')
+    console.log(channelDetail)
 
     useEffect(() => {
         dispatch(getDetailsOfChannelTC(`${id}`))
@@ -40,9 +40,10 @@ const ChannelDetail = () => {
             }}/>
             {channelDetail.id && <ChannelCard
                 marginTop='-93px'
-                id={channelDetail.id.channelId}
+                id={id}
                 img={channelDetail.snippet.thumbnails.high.url}
-                title={channelDetail.snippet.title}/>}
+                title={channelDetail.snippet.title}/>
+            }
 
         </Box>
         <Box display='flex' p='2'>

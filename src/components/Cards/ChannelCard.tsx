@@ -15,7 +15,7 @@ const ChannelCard:React.FC<{id?: string, img: string, title: string, marginTop?:
     textAlign: 'center', color: '#fff'}}>
 <CardMedia
 image={`${img}` || demoProfilePicture}
-sx={{ borderRadius: '50%', height: '180px', width: '180px', mb: 2, border: '1px solid #e3e3e3'}}
+sx={{ borderRadius: '50%', height: '180px', width: '180px', mb: 2, border: '1px solid #e3e3e3', backgroundColor: 'darkgrey'}}
 />
         <Typography variant='h6'>
             {title}
