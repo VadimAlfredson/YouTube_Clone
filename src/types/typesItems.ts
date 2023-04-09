@@ -5,6 +5,7 @@ export type videosItemType = {
         kind: string
         videoId: string
         channelId: string
+        playlistId: string
     }
     kind: string
     snippet: {

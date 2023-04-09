@@ -21,6 +21,7 @@ const Videos = (props: propsType) => {
     >
         {props.videos.map((item, index) => (
             <Box key={index}>
+                {item.id.playlistId && <VideoCard video={item}/>}
                 {item.id.videoId && <VideoCard video={item}/>}
                 {item.id.channelId && <ChannelCard id={item.id.channelId} img={item.snippet.thumbnails.high.url} title={item.snippet.title}/>}
             </Box>
