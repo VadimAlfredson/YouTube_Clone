@@ -19,6 +19,7 @@ export const videosSlice = createSlice({
             videos: action.payload}
         },
         getRegionCode: (state, action: PayloadAction<regionCodeType>) => {
+            debugger
             return {...state, regionCode: action.payload}
         }
     },
