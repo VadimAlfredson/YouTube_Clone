@@ -2,7 +2,7 @@ import {createSlice, Dispatch} from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import {RootState} from "./store";
 import {fetchFromAPI} from "../api/API";
-import {videosItemType} from "../types/typesItems";
+import {regionCodeType, videosItemType} from "../types/typesItems";
 
 
 
@@ -10,23 +10,26 @@ import {videosItemType} from "../types/typesItems";
 export const videosSlice = createSlice({
     name: 'suggestedVideos',
     initialState: {
-        videos: [] as videosItemType[]
+        videos: [] as videosItemType[],
+        regionCode: 'RU' as regionCodeType
     },
     reducers: {
         getVideos: (state, action: PayloadAction<videosItemType[]>) => {
-            debugger
             return { ...state,
             videos: action.payload}
         },
+        getRegionCode: (state, action: PayloadAction<regionCodeType>) => {
+            return {...state, regionCode: action.payload}
+        }
     },
 })
 
-export const { getVideos  } = videosSlice.actions
+export const { getVideos, getRegionCode } = videosSlice.actions
 
-export const getSuggestedVideos = (searchSelected: string) => async (dispatch: Dispatch) =>{
-    let response = await fetchFromAPI.getVideos(searchSelected)
-    console.log(response)
+export const getSuggestedVideos = (searchSelected: string, regionCode?: regionCodeType) => async (dispatch: Dispatch) =>{
     debugger
+    let response = await fetchFromAPI.getVideos(searchSelected, regionCode)
+    console.log(response)
     dispatch(getVideos(response.items))
 }
 

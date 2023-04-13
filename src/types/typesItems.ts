@@ -1,5 +1,7 @@
 import {mkdtemp} from "fs";
 
+export type regionCodeType = "RU" | 'UK' | 'US'
+
 export type videosItemType = {
     id: {
         kind: string

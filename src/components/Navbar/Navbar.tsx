@@ -1,9 +1,9 @@
 import React from "react";
 import {Stack} from "@mui/material";
-import {logo} from "../../utils/constants";
 import {Link} from 'react-router-dom'
 import s from "./Navbar.module.css"
 import SearchBar from "./SearchBar";
+import Language from "./Lenguage";
 
 const Navbar: React.FC = () => {
     return <Stack
@@ -24,9 +24,10 @@ const Navbar: React.FC = () => {
                     <div className={s.whiteLogo}/>
                 </div>
             </div>
-            {/*<img src={logo} alt='logo' className={s.imgLogo}/>*/}
+
         </Link>
         <SearchBar/>
+        <Language />
     </Stack>
 }
 
