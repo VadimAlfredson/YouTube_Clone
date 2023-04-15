@@ -11,8 +11,15 @@ export const instance = axios.create(
 )
 
 export const fetchFromAPI = {
-    getVideos: (search: string, regionCode?: string) => {
-        let options = {params: {maxResults: '50', regionCode: (regionCode ? regionCode : 'RU'), q: `${search}`, part: 'snippet'}}
+    getSuggestedVideos: (selectedCategory: string) => {
+        let options = {params: {maxResults: '50', q: `${selectedCategory}`, part: 'snippet'}}
+        return instance.get(`search?`, options)
+            .then(response => {
+                return response.data
+            })
+    },
+    getSearchVideos: (search: string, regionCode: string) => {
+        let options = {params: {maxResults: '50', regionCode: regionCode, q: `${search}`, part: 'snippet'}}
         return instance.get(`search?`, options)
             .then(response => {
                 return response.data

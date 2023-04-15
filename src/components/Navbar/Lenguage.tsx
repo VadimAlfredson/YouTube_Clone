@@ -2,7 +2,7 @@ import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import LanguageIcon from '@mui/icons-material/Language';
 import {useAppDispatch, useAppSelector} from "../../types/hooks";
-import { getRegionCode } from "../../redux/suggestedVideos_reducer";
+import { getRegionCode } from "../../redux/videos_reducer";
 import {regionCodeType} from "../../types/typesItems";
 
 
@@ -22,15 +22,13 @@ const Language: React.FC = () => {
     }
     return (<div style={{flexDirection: 'row'}}>
         <LanguageIcon sx={{width: '30px', height: '30px', color: 'white'}}/>
-        <FormControl sx={{width: '100px', height: '30px'}} color={"primary"} variant={'standard'} margin={'none'}>
-            <InputLabel id="demo-simple-select-label" sx={{margin: 0, top: '-10px'}}>Language</InputLabel>
+        <FormControl sx={{width: 'auto', height: '30px'}} color={"primary"} variant={'standard'} margin={'none'}>
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={language}
-                label="Language"
                 onChange={handleChange}
-                sx={{color: 'white', top: '-15px', ml: '5px'}}
+                sx={{color: 'white', ml: '5px'}}
             >
                 <MenuItem value={'RU'}>Rus</MenuItem>
                 <MenuItem value={'UK'}>UK</MenuItem>

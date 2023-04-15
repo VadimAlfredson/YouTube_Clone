@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Box, CircularProgress, Typography} from "@mui/material";
 import {videosItemType} from "../../types/typesItems";
 import {useAppDispatch, useAppSelector} from "../../types/hooks";
-import {getSuggestedVideos} from "../../redux/suggestedVideos_reducer";
+import {getSearchVideos} from "../../redux/videos_reducer";
 import Videos from "../Feed/Videos/Videos";
 import {useNavigate, useParams} from "react-router-dom";
 
@@ -11,8 +11,9 @@ const SearchFeed = () => {
     const dispatch = useAppDispatch()
     const videosItems = useAppSelector(state => state.videos.videos)
     const regionCode = useAppSelector(state => state.videos.regionCode)
+    const term = useAppSelector(state => state.videos.searchTerm)
 
-    const {searchTerm} = useParams();
+    const { searchTerm } = useParams();
     const navigate = useNavigate()
 
     const [videos, setVideos] = useState(videosItems as videosItemType[])
@@ -22,11 +23,14 @@ const SearchFeed = () => {
             setVideos(videosItems)
         }
     }, [videosItems])
+
+
     useEffect(() => {
-        if (searchTerm !== '') {
-            dispatch(getSuggestedVideos(`${searchTerm}`, regionCode))
-            navigate(`/search/${searchTerm}`)
+        debugger
+        if (searchTerm != term) {
+            /*navigate(`/search/${searchTerm}`)*/
         }
+            dispatch(getSearchVideos(`${searchTerm}`, regionCode))
     }, [searchTerm])
 
 

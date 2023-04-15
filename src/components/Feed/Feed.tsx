@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import Videos from "./Videos/Videos";
 import {videosItemType} from "../../types/typesItems";
 import {useAppDispatch, useAppSelector} from "../../types/hooks";
-import { getSuggestedVideos } from "../../redux/suggestedVideos_reducer";
+import { getSuggestedVideos } from "../../redux/videos_reducer";
 
 
 
@@ -16,6 +16,7 @@ const Feed = () => {
     const [videos, setVideos] = useState(videosItems as videosItemType[])
 
     useEffect(() => {
+        debugger
         if (videos !== videosItems) {
             setVideos(videosItems)
         }

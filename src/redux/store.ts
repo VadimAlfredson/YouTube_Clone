@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import suggestedVideosReducer from "./suggestedVideos_reducer";
+import suggestedVideosReducer from "./videos_reducer";
 import channelDetailsReducer from "./channelDetails_reducer";
 import videoDetailsReducer from "./videoDetails_reducer";
 // ...

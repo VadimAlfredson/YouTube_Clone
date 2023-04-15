@@ -11,7 +11,8 @@ export const videosSlice = createSlice({
     name: 'suggestedVideos',
     initialState: {
         videos: [] as videosItemType[],
-        regionCode: 'RU' as regionCodeType
+        regionCode: 'RU' as regionCodeType,
+        searchTerm: '' as string
     },
     reducers: {
         getVideos: (state, action: PayloadAction<videosItemType[]>) => {
@@ -21,15 +22,25 @@ export const videosSlice = createSlice({
         getRegionCode: (state, action: PayloadAction<regionCodeType>) => {
             debugger
             return {...state, regionCode: action.payload}
+        },
+        getSearchTerm: (state, action: PayloadAction<string>) => {
+            debugger
+            return {...state, searchTerm: action.payload}
         }
     },
 })
 
-export const { getVideos, getRegionCode } = videosSlice.actions
+export const { getVideos, getRegionCode, getSearchTerm } = videosSlice.actions
 
-export const getSuggestedVideos = (searchSelected: string, regionCode?: regionCodeType) => async (dispatch: Dispatch) =>{
+export const getSuggestedVideos = (searchSelected: string) => async (dispatch: Dispatch) =>{
     debugger
-    let response = await fetchFromAPI.getVideos(searchSelected, regionCode)
+    let response = await fetchFromAPI.getSuggestedVideos(searchSelected)
+    console.log(response)
+    dispatch(getVideos(response.items))
+}
+export const getSearchVideos = (search: string, regionCode: regionCodeType) => async (dispatch: Dispatch) =>{
+    debugger
+    let response = await fetchFromAPI.getSearchVideos(search, regionCode)
     console.log(response)
     dispatch(getVideos(response.items))
 }
