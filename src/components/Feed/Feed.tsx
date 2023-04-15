@@ -16,7 +16,6 @@ const Feed = () => {
     const [videos, setVideos] = useState(videosItems as videosItemType[])
 
     useEffect(() => {
-        debugger
         if (videos !== videosItems) {
             setVideos(videosItems)
         }

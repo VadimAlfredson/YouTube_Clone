@@ -26,7 +26,6 @@ const SearchFeed = () => {
 
 
     useEffect(() => {
-        debugger
         if (searchTerm != term) {
             /*navigate(`/search/${searchTerm}`)*/
         }

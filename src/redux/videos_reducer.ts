@@ -20,11 +20,9 @@ export const videosSlice = createSlice({
             videos: action.payload}
         },
         getRegionCode: (state, action: PayloadAction<regionCodeType>) => {
-            debugger
             return {...state, regionCode: action.payload}
         },
         getSearchTerm: (state, action: PayloadAction<string>) => {
-            debugger
             return {...state, searchTerm: action.payload}
         }
     },
@@ -33,13 +31,11 @@ export const videosSlice = createSlice({
 export const { getVideos, getRegionCode, getSearchTerm } = videosSlice.actions
 
 export const getSuggestedVideos = (searchSelected: string) => async (dispatch: Dispatch) =>{
-    debugger
     let response = await fetchFromAPI.getSuggestedVideos(searchSelected)
     console.log(response)
     dispatch(getVideos(response.items))
 }
 export const getSearchVideos = (search: string, regionCode: regionCodeType) => async (dispatch: Dispatch) =>{
-    debugger
     let response = await fetchFromAPI.getSearchVideos(search, regionCode)
     console.log(response)
     dispatch(getVideos(response.items))

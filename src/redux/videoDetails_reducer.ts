@@ -33,7 +33,6 @@ export const {getVideoDetailsAC, getRelatedVideosAC, getCommentsAC} = videoSlice
 export const getVideoDetailsTC = (videoID: string) => async (dispatch: Dispatch) => {
     let response = await fetchFromAPI.getVideoDetails(videoID)
     console.log(response)
-    debugger
     dispatch(getVideoDetailsAC(response.items[0]))
 }
 
